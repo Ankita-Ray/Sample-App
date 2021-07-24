@@ -1,20 +1,21 @@
-.users-card-container {
+.user-name-container {
+  flex-direction: row;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  padding: 1rem;
-
-  width: 50%;
-  border-radius: 5px;
-
-  box-shadow: 0px 0px 18px 3px rgba(48, 43, 43, 0.32);
-  -webkit-box-shadow: 0px 0px 18px 3px rgba(48, 43, 43, 0.32);
-  -moz-box-shadow: 0px 0px 18px 3px rgba(48, 43, 43, 0.32);
-
-  background-color: whitesmoke;
+  width: 100%;
+  justify-content: space-between;
+}
+.user-name-text {
+  font-weight: 800;
 }
 
-.view-post-text-div:hover {
-  color: blue;
+@media screen and (max-width: 959px) {
+  .users-card-container {
+    width: 83%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .users-card-container {
+    width: 73%;
+  }
 }

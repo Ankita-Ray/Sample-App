@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
+import { useHistory, useLocation } from 'react-router';
 import { PostsApiUrl } from '../../../ApiEndpoints';
+import '../../../global_style.css';
 import Card from '../../components/Card/index';
+import CardContainer from '../../components/CardContainer/index';
 import './posts_gallery_module_style.css';
 
-
-function Posts() {
-    
-    const [posts, setPosts] = useState([
-        {
-            title: 'Lorem ipsum dolor sit amet .',
-            body: " Consequuntur similique, hic cumque, cum accusantium tempora reiciendis voluptate, ipsam quis vero deleniti excepturi suscipit quo voluptatibus magnam officiis aperiam sequi? Enim."
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet .',
-            body: " Consequuntur similique, hic cumque, cum accusantium tempora reiciendis voluptate, ipsam quis vero deleniti excepturi suscipit quo voluptatibus magnam officiis aperiam sequi? Enim."
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet .',
-            body: " Consequuntur similique, hic cumque, cum accusantium tempora reiciendis voluptate, ipsam quis vero deleniti excepturi suscipit quo voluptatibus magnam officiis aperiam sequi? Enim."
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet .',
-            body: " Consequuntur similique, hic cumque, cum accusantium tempora reiciendis voluptate, ipsam quis vero deleniti excepturi suscipit quo voluptatibus magnam officiis aperiam sequi? Enim."
-        }
-     ]);
+function Posts() { 
+    const location=useLocation();
+    const history = useHistory();
+    const [posts, setPosts] = useState("");
    
     useEffect(() => {
         fetch(PostsApiUrl)
@@ -39,35 +26,62 @@ function Posts() {
              
             posts.length > 0
             ?
-            <div className='posts-card-container'>
+            <CardContainer>
+                
+                <PostAuthorHeader />
                 {
-                    posts.map((items,index) => {
+                    posts.filter((items)=> items.userId==location.state.userId).map((items,index) => {
                 
                     return <Card     
-                                    height='6rem'
-                                    width='70%'
+                                    height='12rem'
+                                    width='90%'
                                     fontSize='18px'
                                     backgroundColor='rgba(221, 190, 174, 0.408)'
                                     key={index}
                     >
                         <div style={{flexDirection:'column'}}>
-                            <div style={{marginBottom:15}}>{index+1}.hi</div>
+                            <div className="post-title">
+                                <h3 className="margin-zero ">{index + 1}. {items.title}</h3>
+                            </div>
                                  
-                             <div className="post-gallery-body-text" >{items.body}</div>
-                                
+                            <div className="post-gallery-body-text" >
+                                {items.body.slice(0, 80)}...
+                            </div>
+                            <button className="pointer-on-hover read-more-button"
+                                    onClick={() => history.push(
+                                                                    `/users/${location.state.userName}/postId=[${items.id}]/postDetails`,
+                                                                    { postId: items.id, title: items.title, body: items.body, userName: location.state.userName }
+                                                                )
+                                            }
+                                    >
+                                Read More
+                            </button>
                         </div>
                                     
                         
-                            </Card>
+                    </Card>
                     }
                     )
                 }
-            </div>
+                <p style={{textAlign:"left"}}>&#x25cf;&nbsp;&#x25cf;&nbsp;&#x25cf;&nbsp;</p>
+
+            </CardContainer>
             :
-            null
+            <ActivityIndicator/>
 
 
     )
 }
 
-export default Posts
+export default Posts;
+
+const PostAuthorHeader = () => {
+    const location=useLocation();
+
+    return (
+        <div className="author-header">
+                    <h2 className="margin-zero">Author - {location.state.userName}</h2>
+        </div>
+             
+    )
+}

@@ -10,6 +10,8 @@
   padding: 0.7rem;
 
   display: flex;
+
+  overflow: auto;
   /* align-items: center; */
   justify-content: flex-start;
 

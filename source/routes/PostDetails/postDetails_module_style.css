@@ -1,0 +1,42 @@
+.post-title-container {
+  width: 80%;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  align-self: center;
+  color: rgb(83, 72, 59);
+}
+.post-details-title {
+  text-align: center;
+  text-transform: capitalize;
+}
+.post-author {
+  text-align: center;
+  text-decoration: underline;
+}
+.post-body-text {
+  font-size: 18px;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  text-align: left;
+}
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid black;
+  height: 5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 5px;
+}
+.commenter-details-container {
+  flex-direction: row;
+  padding-bottom: 0;
+  justify-content: space-between;
+  display: flex;
+}
+.commenter-name-text {
+  display: flex;
+  color: rgb(83, 72, 59);
+  text-transform: uppercase;
+}

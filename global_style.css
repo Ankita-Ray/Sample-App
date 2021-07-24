@@ -1,8 +1,7 @@
-/* .main-app-container {
-  background-color: rgb(250, 235, 215);
-  flex: 1;
-  padding: 2% 10% 0 10%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
+.pointer-on-hover:hover {
+  cursor: pointer;
+}
+.margin-zero {
+  margin-top: 0;
+  margin-bottom: 0;
+}
