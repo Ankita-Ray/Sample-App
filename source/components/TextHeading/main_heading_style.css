@@ -1,0 +1,6 @@
+.main-heading-container {
+  display: flex;
+  justify-content: center;
+
+  text-transform: uppercase;
+}

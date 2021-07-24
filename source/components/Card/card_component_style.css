@@ -1,0 +1,31 @@
+.card {
+  /* background-color: rgba(221, 190, 174, 0.408);
+  height: 2rem;
+  width: 30%; */
+
+  /* border: 1px solid grey ; */
+  border-radius: 5px;
+
+  margin: 2%;
+  padding: 0.7rem;
+
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-start;
+
+  color: rgb(82 71 58);
+
+  letter-spacing: 0.5px;
+  /* line-height: 1px; */
+
+  transition: transform, background-color, font-size,
+    font-weight 0.5s ease-in-out;
+}
+.card:hover {
+  transform: translate(-5px, 0px);
+  background-color: rgba(221, 190, 174, 0.802);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 10px 8px 12px 1px rgba(48, 43, 43, 0.32);
+}
