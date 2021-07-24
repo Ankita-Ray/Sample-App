@@ -1,3 +1,3 @@
 # Sample-App
 
-Deployed Url is : https://sample-app-ankita-ray.vercel.app/
+Deployed Url is : https://overconfident-cover.surge.sh/
